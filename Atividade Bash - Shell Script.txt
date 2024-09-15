@@ -1,0 +1,230 @@
+Exercicio 1 - relacao.sh
+
+# O Nano é um editor de texto de terminal que é simples e fácil de usar, principalmente em ambientes Unix e Linux. 
+nano relacao.sh
+
+# verifica se foram passados dois parametros
+if [ $# -ne 2]; then
+echo "Uso: $0 numero1 numero2"
+exit 1
+fi
+# atibui os parametros a variaveis
+num1=$1
+num2=$2
+#compara os numeros e mostra a relacao entre eles
+if  [ $num1 -lt $num2 ]; then
+        echo "$num1 é menor que $num2"
+elif [ $num1 -gt $num2 ]; then
+        echo "$num1 é maior que $num2"
+else
+        "$num1 é igual a $num2"
+fi
+
+# O comando chmod +x é usado para modificar as permissões de um arquivo no Unix e Linux, permitindo que o arquivo seja executado como um programa ou script.
+chmod +x relacao.sh
+
+# O comando ./******.sh é usado para executar um script chamado relacao.sh no Unix ou Linux.
+./relacao.sh 5 3
+
+Exemplo de saida: 
+
+5 é maior que 3.
+
+--------------------------------------------------------------------------------------
+
+Exercicio 2 - zerador.sh
+
+# O Nano é um editor de texto de terminal que é simples e fácil de usar, principalmente em ambientes Unix e Linux. 
+nano zerador.sh
+
+# verifica se foi passado um parametro
+if [ $# -ne 1 ]; then
+echo "Uso: $0 numero"
+exit 1
+fi
+
+# atribui o parametro a uma variavel
+num=$1
+
+# Verifica se o parametro é um numero
+if ! [[ $num =~ ^[0-9]+$ ]]; then
+echo "Erro: O parametro deve ser um número inteiro."
+exit 1
+fi
+
+#Diminui o numero até chegar a zero, mostrando cada passo na mesma linha
+while [ $num -ge 0 ]; do
+echo -n "$num "
+num=$((num - 1))
+done
+
+#Adiciona uma nova linha ao final
+echo
+
+# O comando chmod +x é usado para modificar as permissões de um arquivo no Unix e Linux, permitindo que o arquivo seja executado como um programa ou script.
+chmod +x zerador.sh
+
+# O comando ./******.sh é usado para executar um script chamado relacao.sh no Unix ou Linux.
+./zerador.sh 5
+
+Exemplo de saida: 
+
+5 4 3 2 1.
+
+--------------------------------------------------------------------------------------
+
+Exercicio 3 - substring.sh
+
+# O Nano é um editor de texto de terminal que é simples e fácil de usar, principalmente em ambientes Unix e Linux. 
+nano substring.sh
+
+# Verifica se foi passado dois parametros
+if [ $# -ne 2 ]; then
+echo "Uso: $0 palavra1 palavra2"
+exit 1
+fi
+
+#atribui os parametros a variaveis
+palavra1=$1
+palavra2=$2
+
+#Verifica se a primeira palavra esta contida na segunda
+if [[ $palavra2 == *$palavra1* ]]; then
+echo "$palavra1 está contida em $palavra2"
+fi
+
+# O comando chmod +x é usado para modificar as permissões de um arquivo no Unix e Linux, permitindo que o arquivo seja executado como um programa ou script.
+chmod +x substring.sh
+
+# O comando ./******.sh é usado para executar um script chamado relacao.sh no Unix ou Linux.
+./substring.sh ana banana
+
+Exemplo de saida: 
+
+Ana está contida em banana.
+
+O comando grep é uma ferramenta amplamente utilizada em sistemas Unix e Linux para buscar e filtrar linhas de texto que correspondem a um padrão específico, mas nao foi necessario utiliza-lo.
+
+--------------------------------------------------------------------------------------
+
+Exercicio 4 - juntatudo.sh
+
+# O Nano é um editor de texto de terminal que é simples e fácil de usar, principalmente em ambientes Unix e Linux. 
+nano juntatudo.sh
+
+# Verifica se algum parâmetro foi passado
+if [ $# -eq 0 ]; then
+  echo "Uso: $0 parametro1 parametro2 ..."
+  exit 1
+fi
+
+# Concatena todos os parâmetros em uma única string
+resultado=""
+
+for parametro in "$@"; do
+  resultado+="$parametro"
+done
+
+# Exibe o resultado
+echo "$resultado"
+
+# O comando chmod +x é usado para modificar as permissões de um arquivo no Unix e Linux, permitindo que o arquivo seja executado como um programa ou script.
+chmod +x juntatudo.sh
+
+# O comando ./******.sh é usado para executar um script chamado relacao.sh no Unix ou Linux.
+./juntatudo.sh a b c d e f verde azul
+
+Exemplo de saida:
+
+abcdefverdeazul.
+
+O comando tr -d ' ' remove todos os espaços, juntando os parâmetros em uma única palavra, mas nao foi necessario utiliza-lo.
+
+--------------------------------------------------------------------------------------
+
+Exercício 5 - users.sh 
+
+# O Nano é um editor de texto de terminal que é simples e fácil de usar, principalmente em ambientes Unix e Linux. 
+nano users.sh
+
+awk -F: '{print $1 "\t" $5}' /etc/passwd
+
+# O comando chmod +x é usado para modificar as permissões de um arquivo no Unix e Linux, permitindo que o arquivo seja executado como um programa ou script.
+chmod +x users.sh
+
+# O comando ./******.sh é usado para executar um script chamado relacao.sh no Unix ou Linux.
+./users.sh
+
+Exemplo de saida:
+
+ftp    FTP User
+nobody Nobody named Domain name server
+xfs    X Font Server
+mysql  MySQL Server
+aurelio Aurelio Marinho
+
+O comando cut é uma ferramenta usada em sistemas Unix e Linux para extrair seções específicas de linhas de texto. É útil para trabalhar com dados formatados em colunas ou campos e para extrair partes específicas de um arquivo ou entrada, mas nao foi necessario usa-lo.
+
+--------------------------------------------------------------------------------------
+
+Exercício 6 - shells.sh
+
+# O Nano é um editor de texto de terminal que é simples e fácil de usar, principalmente em ambientes Unix e Linux. 
+nano shells.sh
+
+awk -F: '{print $7}' /etc/passwd | sort | uniq
+
+# O comando chmod +x é usado para modificar as permissões de um arquivo no Unix e Linux, permitindo que o arquivo seja executado como um programa ou script.
+chmod +x shells.sh
+
+# O comando ./******.sh é usado para executar um script chamado relacao.sh no Unix ou Linux.
+./shells.sh
+
+Exemplo de saida: 
+
+/bin/bash
+/bin/false
+/bin/sync
+/sbin/halt
+/sbin/shutdown
+
+O comando uniq no Unix/Linux é usado para filtrar ou remover linhas duplicadas consecutivas em um arquivo ou em uma entrada de texto. Ele geralmente é usado em conjunto com o comando sort, pois funciona melhor quando as linhas estão ordenadas.
+
+--------------------------------------------------------------------------------------
+
+Exercício 7 - parametros.sh
+
+# O Nano é um editor de texto de terminal que é simples e fácil de usar, principalmente em ambientes Unix e Linux. 
+nano parametros.sh
+
+# Verifica se pelo menos um parâmetro foi passado
+if [ $# -eq 0 ]; then
+  echo "Uso: $0 parametros"
+  exit 1
+fi
+
+# Contador para os parâmetros
+count=1
+
+# Loop para percorrer todos os parâmetros passados
+for param in "$@"; do
+  echo "Parâmetro $count: $param"
+  count=$((count + 1))
+done
+
+# O comando chmod +x é usado para modificar as permissões de um arquivo no Unix e Linux, permitindo que o arquivo seja executado como um programa ou script.
+chmod +x parametros.sh
+
+# O comando ./******.sh é usado para executar um script chamado relacao.sh no Unix ou Linux.
+./parametros.sh a b c d e f
+
+exemplo de saida:
+
+Parâmetro 1: a
+Parâmetro 2: b
+Parâmetro 3: c
+Parâmetro 4: d
+Parâmetro 5: e
+Parâmetro 6: f
+
+O comando shift é usado em scripts de shell (como Bash) para manipular os parâmetros posicionais que são passados para o script ou função. Ele é útil para alterar quais parâmetros são acessíveis sem precisar modificar a posição dos parâmetros ou reescrever o script.
